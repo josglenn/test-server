@@ -37,8 +37,8 @@ const userValidation = [
     .isLength({ max: 100 })
     .withMessage('Company name cannot be more than 100 characters'),
   body('company_size')
-    .isIn(['1-10', '11-50', '51-200', '201-500', '501-1000', '1000+'])
-    .withMessage('Company size must be one of: 1-10, 11-50, 51-200, 201-500, 501-1000, 1000+'),
+    .isInt({ min: 1, max: 1000000 })
+    .withMessage('Company size must be an integer between 1 and 1,000,000'),
   body('website')
     .optional()
     .isURL({ protocols: ['http', 'https'] })
