@@ -101,7 +101,7 @@ http://localhost:3000/api
 - **last_name**: String, max 50 characters  
 - **email**: Valid email format, unique
 - **company_name**: String, max 100 characters
-- **company_size**: One of: `1-10`, `11-50`, `51-200`, `201-500`, `501-1000`, `1000+`
+- **company_size**: Integer, between 1 and 1,000,000
 - **lead_source**: One of: `website`, `social_media`, `referral`, `advertisement`, `cold_call`, `email_campaign`, `event`, `other`
 
 #### Optional Fields
@@ -118,7 +118,7 @@ curl -X POST http://localhost:3000/api/users \
     "last_name": "Doe",
     "email": "john@example.com",
     "company_name": "Acme Corp",
-    "company_size": "51-200",
+    "company_size": 150,
     "website": "https://acme.com",
     "lead_source": "website"
   }'
@@ -143,7 +143,7 @@ curl -X PUT http://localhost:3000/api/users/USER_ID \
     "last_name": "Smith",
     "email": "johnsmith@example.com",
     "company_name": "Acme Corporation",
-    "company_size": "201-500",
+    "company_size": 250,
     "website": "https://acme-corp.com",
     "lead_source": "referral"
   }'
@@ -156,7 +156,7 @@ curl http://localhost:3000/api/users/leads/website
 
 #### Get Users by Company Size
 ```bash
-curl http://localhost:3000/api/users/companies/51-200
+curl http://localhost:3000/api/users/companies/150
 ```
 
 #### Delete User/Lead
@@ -178,7 +178,7 @@ All responses follow this format:
     "full_name": "John Doe",
     "email": "john@example.com",
     "company_name": "Acme Corp",
-    "company_size": "51-200",
+    "company_size": 150,
     "website": "https://acme.com",
     "lead_source": "website",
     "isActive": true,
@@ -205,7 +205,7 @@ All responses follow this format:
 - **last_name**: Required, max 50 characters
 - **email**: Required, valid email format, unique
 - **company_name**: Required, max 100 characters
-- **company_size**: Required, enum values (1-10, 11-50, 51-200, 201-500, 501-1000, 1000+)
+- **company_size**: Required, integer between 1 and 1,000,000
 - **website**: Optional, valid URL format
 - **lead_source**: Required, enum values (website, social_media, referral, advertisement, cold_call, email_campaign, event, other)
 - **isActive**: Boolean, defaults to true

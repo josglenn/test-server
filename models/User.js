@@ -27,12 +27,10 @@ const userSchema = new mongoose.Schema({
     maxlength: [100, 'Company name cannot be more than 100 characters']
   },
   company_size: {
-    type: String,
+    type: Number,
     required: [true, 'Company size is required'],
-    enum: {
-      values: ['1-10', '11-50', '51-200', '201-500', '501-1000', '1000+'],
-      message: 'Company size must be one of: 1-10, 11-50, 51-200, 201-500, 501-1000, 1000+'
-    }
+    min: [1, 'Company size must be at least 1'],
+    max: [1000000, 'Company size cannot exceed 1,000,000']
   },
   website: {
     type: String,
